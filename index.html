@@ -476,6 +476,158 @@ input[type=submit] {
     <a href="https://api.whatsapp.com/send?phone=+919500620414&text=Hello One Way Taxi Tamilnadu" class="float" target="_blank">
     <i class="fa fa-whatsapp my-float"></i>
     </a>
+	
+	<!-- START CONTACT -->
+<section class="section" id="book">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="header-title text-center">
+                    <p class="text-uppercase text-muted mb-2">One Way Taxi tamilnadu</p>
+                        <h2 class="text-uppercase">Online Booking Form</h2>
+                    <div class="title-border mt-3"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5 pt-2">
+            
+
+            <div class="col-lg-7">
+                <div class="custom-form">
+                    <div id="message"></div>
+			<div class="alert">Your message has been sent</div>
+                    <form method="post" name="bookingForm" id="bookingForm">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group mt-3">
+                                    <input  id="name" type="text" class="form-control" placeholder="Enter Your Name" required>
+                                </div>
+                            </div>
+				<div class="col-lg-6">
+                                <div class="form-group mt-3">
+                                    <input  id="phone" type="tel" class="form-control" placeholder="Enter Your Phone Number" pattern="[6-9]{1}[0-9]{9}" title="Incorrect Phone number" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group mt-3">
+					 <div  class="autocomplete">
+                                    <input  id="pickup" type="text" class="form-control" placeholder="Pickup Location" required>
+                                </div></div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group mt-3">
+					 <div  class="autocomplete">
+                                    <input id="drop" type="text" class="form-control" placeholder="Drop Location" required>
+                                </div></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group mt-3">
+                                  <input  id="date" type="text" placeholder=" Pickup Date" type="text" onfocus="(this.type = 'date')" class="form-control" placeholder="Date" required>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group mt-3">
+                                    <input name="number" id="time" type="text" placeholder=" Pickup Time" type="text" onfocus="(this.type = 'time')" class="form-control" placeholder="time" required>
+                                </div>
+                            </div>
+                        </div>
+			    
+			     <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group mt-3">
+                                    <select class="form-control" id="ser">
+					<option value="One Way Taxi">Choose your way</option>
+					<option value="One Way Taxi">One Way Drop</option>
+					<option value="Round Trip Cab">Round Trip Cab</option>
+					<option value="Tours & Travels">Tours & Travels</option>
+				   </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group mt-3">
+                                    <select class="form-control" id="cars">
+					<option value="Sedan">Select Your Car Type</option>
+					<option value="Sedan">Sedan</option>
+					<option value="SUV">SUV</option>
+                                        <option value="Traveller">Traveller</option>
+				    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mt-3">
+                                    <input type="submit" id="submit" onclick="testVariable()" name="send" class="submitBnt btn btn-primary" value="Send Message">
+                                    <div id="simple-msg"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- END CONTACT -->
+	
+	<script>
+		function testVariable() {
+			var strText = document.getElementById("name").value;
+			var strText1 = document.getElementById("phone").value;
+			var strText2 = document.getElementById("pickup").value;
+			var strText3 = document.getElementById("drop").value;
+			var strText4 = document.getElementById("date").value;
+			var strText6 = document.getElementById("time").value;
+			var strText7 = document.getElementById("cars").value;
+			var strText8 = document.getElementById("ser").value;
+			var result = 'Customer Name:  ' + strText + '%0APhone Number: ' + strText1 +'%0APickup Location: ' + strText2+  '%0ADrop Location: ' + strText3 + '%0APickup Date: ' + strText4 + '%0APickup Time: ' + strText6 +'%0AService: ' + strText8 + '%0ACars: ' + strText7;
+			var finalMsg = encodeURI(result);
+			document.getElementById("bookingForm").addEventListener("submit", (e) => {
+				e.preventDefault();
+				if (strText == "" || strText1 == "" || strText2 == "" || strText3 == "" || strText4 == "" || strText7 == "" || strText6 == "") {
+					console.log('error');
+				} else {
+					const request = new XMLHttpRequest();
+					const url = 'https://api.telegram.org/bot1621135308:AAH5pmDfQPgTgcGsH8FXm8cz4JLULdM8by4/sendMessage?chat_id=-501275331&text='+ result;
+					
+					request.open("post", url);
+					request.send();
+					window.open('#', '_self'); 
+					/*const url1 = "https://www.fast2sms.com/dev/bulk?authorization=tXGFnAr4LNYZM8Q9jwPVHxWdvs6eahl2qk5of7SzpRbOUEumITTnoiOFHqdCLhzJPgaxer2mpZ8UNEyf&sender_id=FSTSMS&message=https://onewaytaxitamilnadu.in%0AContact No: 9500620414%0AHello "+strText+",%0AThank you for Booking with One Way Taxi Tamilnadu.%0AYour Booking has been Confirmed.%0ABooking Details%0A"+result+"%0AFor your kind information toll and state taxes will be paid on your own.%0AHope you'll enjoy the ride&language=english&route=p&numbers="+strText1;
+					
+					request.open("post", url1);
+					request.send();
+					window.open('#', '_self'); */
+				var wnd = window.open("https://www.fast2sms.com/dev/bulk?authorization=tXGFnAr4LNYZM8Q9jwPVHxWdvs6eahl2qk5of7SzpRbOUEumITTnoiOFHqdCLhzJPgaxer2mpZ8UNEyf&sender_id=FSTSMS&message=https://onewaytaxitamilnadu.in%0AContact No: 9500620414%0AHello "+strText+",%0AThank you for Booking with One Way Taxi Tamilnadu.%0AYour Booking has been Confirmed.%0ABooking Details%0A"+result+"%0AFor your kind information toll and state taxes will be paid on your own.%0AHope you'll enjoy the ride&language=english&route=p&numbers="+strText1);
+					      
+                              if(wnd){
+                                      setTimeout(function () { wnd.close();}, 500);
+                              }
+				}
+
+			});
+
+		}
+	</script>
+	
+	<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase.js"></script>
+	<script src="js/book.js"></script>
+		
+
+	
     <!-- START ABOUT -->
     <section class="section" id="about">
         <div class="container">
@@ -654,155 +806,6 @@ input[type=submit] {
 </section-->
     <!-- END form -->
 
-<!-- START CONTACT -->
-<section class="section" id="book">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="header-title text-center">
-                    <p class="text-uppercase text-muted mb-2">One Way Taxi tamilnadu</p>
-                        <h2 class="text-uppercase">Online Booking Form</h2>
-                    <div class="title-border mt-3"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row mt-5 pt-2">
-            
-
-            <div class="col-lg-7">
-                <div class="custom-form">
-                    <div id="message"></div>
-			<div class="alert">Your message has been sent</div>
-                    <form method="post" name="bookingForm" id="bookingForm">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group mt-3">
-                                    <input  id="name" type="text" class="form-control" placeholder="Enter Your Name" required>
-                                </div>
-                            </div>
-				<div class="col-lg-6">
-                                <div class="form-group mt-3">
-                                    <input  id="phone" type="tel" class="form-control" placeholder="Enter Your Phone Number" pattern="[6-9]{1}[0-9]{9}" title="Incorrect Phone number" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group mt-3">
-					 <div  class="autocomplete">
-                                    <input  id="pickup" type="text" class="form-control" placeholder="Pickup Location" required>
-                                </div></div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="form-group mt-3">
-					 <div  class="autocomplete">
-                                    <input id="drop" type="text" class="form-control" placeholder="Drop Location" required>
-                                </div></div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group mt-3">
-                                  <input  id="date" type="text" placeholder=" Pickup Date" type="text" onfocus="(this.type = 'date')" class="form-control" placeholder="Date" required>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="form-group mt-3">
-                                    <input name="number" id="time" type="text" placeholder=" Pickup Time" type="text" onfocus="(this.type = 'time')" class="form-control" placeholder="time" required>
-                                </div>
-                            </div>
-                        </div>
-			    
-			     <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group mt-3">
-                                    <select class="form-control" id="ser">
-					<option value="One Way Taxi">Choose your way</option>
-					<option value="One Way Taxi">One Way Drop</option>
-					<option value="Round Trip Cab">Round Trip Cab</option>
-					<option value="Tours & Travels">Tours & Travels</option>
-				   </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="form-group mt-3">
-                                    <select class="form-control" id="cars">
-					<option value="Sedan">Select Your Car Type</option>
-					<option value="Sedan">Sedan</option>
-					<option value="SUV">SUV</option>
-                                        <option value="Traveller">Traveller</option>
-				    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="mt-3">
-                                    <input type="submit" id="submit" onclick="testVariable()" name="send" class="submitBnt btn btn-primary" value="Send Message">
-                                    <div id="simple-msg"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</section>
-<!-- END CONTACT -->
-	
-	<script>
-		function testVariable() {
-			var strText = document.getElementById("name").value;
-			var strText1 = document.getElementById("phone").value;
-			var strText2 = document.getElementById("pickup").value;
-			var strText3 = document.getElementById("drop").value;
-			var strText4 = document.getElementById("date").value;
-			var strText6 = document.getElementById("time").value;
-			var strText7 = document.getElementById("cars").value;
-			var strText8 = document.getElementById("ser").value;
-			var result = 'Customer Name:  ' + strText + '%0APhone Number: ' + strText1 +'%0APickup Location: ' + strText2+  '%0ADrop Location: ' + strText3 + '%0APickup Date: ' + strText4 + '%0APickup Time: ' + strText6 +'%0AService: ' + strText8 + '%0ACars: ' + strText7;
-			var finalMsg = encodeURI(result);
-			document.getElementById("bookingForm").addEventListener("submit", (e) => {
-				e.preventDefault();
-				if (strText == "" || strText1 == "" || strText2 == "" || strText3 == "" || strText4 == "" || strText7 == "" || strText6 == "") {
-					console.log('error');
-				} else {
-					const request = new XMLHttpRequest();
-					const url = 'https://api.telegram.org/bot1621135308:AAH5pmDfQPgTgcGsH8FXm8cz4JLULdM8by4/sendMessage?chat_id=-501275331&text='+ result;
-					
-					request.open("post", url);
-					request.send();
-					window.open('#', '_self'); 
-					/*const url1 = "https://www.fast2sms.com/dev/bulk?authorization=tXGFnAr4LNYZM8Q9jwPVHxWdvs6eahl2qk5of7SzpRbOUEumITTnoiOFHqdCLhzJPgaxer2mpZ8UNEyf&sender_id=FSTSMS&message=https://onewaytaxitamilnadu.in%0AContact No: 9500620414%0AHello "+strText+",%0AThank you for Booking with One Way Taxi Tamilnadu.%0AYour Booking has been Confirmed.%0ABooking Details%0A"+result+"%0AFor your kind information toll and state taxes will be paid on your own.%0AHope you'll enjoy the ride&language=english&route=p&numbers="+strText1;
-					
-					request.open("post", url1);
-					request.send();
-					window.open('#', '_self'); */
-				var wnd = window.open("https://www.fast2sms.com/dev/bulk?authorization=tXGFnAr4LNYZM8Q9jwPVHxWdvs6eahl2qk5of7SzpRbOUEumITTnoiOFHqdCLhzJPgaxer2mpZ8UNEyf&sender_id=FSTSMS&message=https://onewaytaxitamilnadu.in%0AContact No: 9500620414%0AHello "+strText+",%0AThank you for Booking with One Way Taxi Tamilnadu.%0AYour Booking has been Confirmed.%0ABooking Details%0A"+result+"%0AFor your kind information toll and state taxes will be paid on your own.%0AHope you'll enjoy the ride&language=english&route=p&numbers="+strText1);
-					      
-                              if(wnd){
-                                      setTimeout(function () { wnd.close();}, 500);
-                              }
-				}
-
-			});
-
-		}
-	</script>
-	
-	<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase.js"></script>
-	<script src="js/book.js"></script>
-		
 
     <!-- START SKILL -->
     <section class="section bg-light">
